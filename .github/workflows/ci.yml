@@ -18,6 +18,8 @@ jobs:
       with:
         go-version: 1.18
 
+    - name: Install Task
+      uses: arduino/setup-task@v1
 
     - name: Test
       run: task test
