@@ -1,0 +1,69 @@
+version: "3"
+
+vars:
+    DB_URL: postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable
+
+tasks:
+
+
+    createdb: 
+        desc: Create simple_bank db
+        cmds:
+        - docker exec -it postgres14 createdb --username=root --owner=root simple_bank
+
+    dropdb:
+        desc: Drop simple_bank db
+        cmds:
+        - docker exec -it postgres14 dropdb simple_bank
+
+
+    lv: 
+        desc: List docker host volume path
+        cmds:
+        - sudo ls -l /var/lib/docker/volumes/postgres/_data
+
+
+    mup1:
+        desc: Migrate up file 000001_init_schema.up.sql
+        cmds:
+        - migrate -path db/migration -database "{{.DB_URL}}" -verbose up
+
+
+    mdown1:
+        desc: Migrate down file 000001_init_schema.down.sql
+        cmds:
+        - migrate -path db/migration -database "{{.DB_URL}}" -verbose down
+
+    postgres:
+        desc: Start Postgress db
+        cmds:
+        - docker run --rm --name postgres14 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:14-alpine
+
+    shell:
+        desc: Shell into container
+        cmds:
+        - docker exec -it postgres14 /bin/sh
+
+
+    sqlc: 
+        desc: Generate sql code
+        cmds:
+        - sqlc generate
+
+    spostgres:
+        desc: Start Postgress db with perment storage
+        cmds:
+        - docker run --rm --name postgres14 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d -v postgres:/var/lib/postgresql/data postgres:14-alpine 
+
+    test: 
+        desc: Run test code
+        cmds:
+        - go test -v -cover ./...
+
+    usedb:
+        desc: Use simple_bank db
+        cmds:
+        - docker exec -it postgres14 psql -U root -d simple_bank
+
+    
+
