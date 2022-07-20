@@ -45,8 +45,11 @@ jobs:
       uses: arduino/setup-task@v1
 
     - name: Install Migration
-      run: curl -L https://github.com/golang-migrate/migrate/releases/download/v4.15.2/migrate.linux-amd64.tar.gz | tar xvz
-
+      run: |
+        curl -L https://github.com/golang-migrate/migrate/releases/download/v4.15.2/migrate.linux-amd64.tar.gz | tar xvz
+        sudo mv migrate.linux-amd64 /usr/bin/migrate
+        which migrate
+        
     - name: Run Migrations
       run: task mup1
 
