@@ -1,26 +1,23 @@
-package db
+package main
 
 import (
 	"database/sql"
 	"log"
-	"os"
-	"testing"
 
+	"github.com/alexmolly/simple_bank/api"
+	db "github.com/alexmolly/simple_bank/db/sqlc"
 	"github.com/alexmolly/simple_bank/util"
 	_ "github.com/lib/pq"
 )
 
-var testQueries *Queries
-
-func TestMain(m *testing.M) {
-
-	log.Println("--------------------Running TestMain")
+func main() {
 
 	var conn *sql.DB
 	var err error
+
 	var config util.Config
 
-	config, err = util.LoadConfig("../..")
+	config, err = util.LoadConfig(".")
 	if err != nil {
 		log.Fatal("cannot load config file:", err)
 	}
@@ -30,7 +27,11 @@ func TestMain(m *testing.M) {
 		log.Fatal("cannot connect to db:", err)
 	}
 
-	testQueries = New(conn)
+	var store db.Store = db.NewStore(conn)
+	var server *api.Server = api.NewServer(store)
 
-	os.Exit(m.Run())
+	err = server.Start(config.ServerAddress)
+	if err != nil {
+		log.Fatal("cannot start server: ", err)
+	}
 }
