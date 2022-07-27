@@ -28,11 +28,22 @@ tasks:
         cmds:
         - migrate -path db/migration -database "{{.DB_URL}}" -verbose up
 
+    mup2:
+        desc: Migrate up file 000002_add_users
+        cmds:
+        - migrate -path db/migration -database "{{.DB_URL}}" -verbose up 1
+
 
     mdown1:
         desc: Migrate down file 000001_init_schema.down.sql
         cmds:
         - migrate -path db/migration -database "{{.DB_URL}}" -verbose down
+
+
+    mdown2:
+        desc: Migrate down file 000002_add_users
+        cmds:
+        - migrate -path db/migration -database "{{.DB_URL}}" -verbose down 1  
 
     postgres:
         desc: Start Postgress db
