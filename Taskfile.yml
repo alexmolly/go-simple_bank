@@ -78,7 +78,7 @@ tasks:
         - docker run --rm --name postgres14 --network simple-bank-network -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d -v postgres:/var/lib/postgresql/data postgres:14-alpine 
 
     sapi:
-        desc: Start simplebank api image 
+        desc: Start simplebank api imagee
         cmds:
         - docker container run --rm --name simplebank --network simple-bank-network -p 8080:8080 -e GIN_MODE=release -e "DB_SOURCE=postgresql://root:secret@postgres14:5432/simple_bank?sslmode=disable" simplebank:latest
 
