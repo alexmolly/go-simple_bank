@@ -68,7 +68,7 @@ tasks:
 
 
     sqlc: 
-        desc: Generate sql code
+        desc: Generate sql codee
         cmds:
         - sqlc generate
 
