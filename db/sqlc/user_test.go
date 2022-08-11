@@ -74,11 +74,11 @@ func TestCreateUser(t *testing.T) {
 
 }
 
-func TestMyUser(t *testing.T) {
+// func TestMyUser(t *testing.T) {
 
-	createMyUser(t)
+// 	createMyUser(t)
 
-}
+// }
 
 func TestGetUser(t *testing.T) {
 	user1 := createRandomUser(t)
