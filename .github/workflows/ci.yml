@@ -57,5 +57,5 @@ jobs:
       run: task mup1
 
 
-    # - name: Test
-    #   run: task test
+    - name: Test
+      run: task test
