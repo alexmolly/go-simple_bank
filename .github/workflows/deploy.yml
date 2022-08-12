@@ -17,15 +17,23 @@ jobs:
       GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
     steps:
+      name: Step 1 - Echo out a GitHub Actions Secret to the logs
+      run: |
+        echo "GOOGLE_CREDENTIALS"
+        echo ${{ secrets.GOOGLE_CREDENTIALS }}
+
+
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v0
-        with:
+      # - name: Authenticate to Google Cloud
+      #   uses: google-github-actions/auth@v0
+      #   with:
+      #     credentials_json: 'env.GOOGLE_CREDENTIALS'
+
+
           # workload_identity_provider: projects/958830472274/locations/global/workloadIdentityPools/gh-pool/providers/gh-provider
           # service_account: simple-bank-account@my-linux-project-348713.iam.gserviceaccount.com 
-          credentials_json: 'env.GOOGLE_CREDENTIALS'
 
       # - name: Configure Docker
       #   run: gcloud auth configure-docker --quiet
