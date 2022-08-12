@@ -22,25 +22,26 @@ jobs:
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v0
         with:
-          workload_identity_provider: projects/958830472274/locations/global/workloadIdentityPools/gh-pool/providers/gh-provider
-          service_account: simple-bank-account@my-linux-project-348713.iam.gserviceaccount.com 
+          # workload_identity_provider: projects/958830472274/locations/global/workloadIdentityPools/gh-pool/providers/gh-provider
+          # service_account: simple-bank-account@my-linux-project-348713.iam.gserviceaccount.com 
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
-      - name: Configure Docker
-        run: gcloud auth configure-docker --quiet
+      # - name: Configure Docker
+      #   run: gcloud auth configure-docker --quiet
 
-      - name: Build Docker image
-        run: docker build . -t $IMAGE_NAME
+      # - name: Build Docker image
+      #   run: docker build . -t $IMAGE_NAME
 
-      - name: Push Docker image
-        run: docker push $IMAGE_NAME
+      # - name: Push Docker image
+      #   run: docker push $IMAGE_NAME
 
-      - id: deploy
-        name: Deploy Docker image
-        uses: "google-github-actions/deploy-cloudrun@v0"
-        with:
-          image: ${{ env.IMAGE_NAME }}
-          region: us-central1
-          service: app
+      # - id: deploy
+      #   name: Deploy Docker image
+      #   uses: "google-github-actions/deploy-cloudrun@v0"
+      #   with:
+      #     image: ${{ env.IMAGE_NAME }}
+      #     region: us-central1
+      #     service: app
 
-      - name: Test URL
-        run: curl "${{ steps.deploy.outputs.url }}"
+      # - name: Test URL
+      #   run: curl "${{ steps.deploy.outputs.url }}"
