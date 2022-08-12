@@ -21,10 +21,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v0
-        with:
-          credentials_json: '-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDiVaev0Z1IyWFV\nRic3/+TrpYRIkgwyH6klzH5dyE72Y2rBVVOECf7xkrtp8qEATSnzgyMzLw53ax2q\nFu9RBcWyQIQe/zaiOlc3vasfNQsEnMKsPa+nK/9eHgB84HNHgg8BDxFHcyUkCVyi\nf7yw0BBGyrMv8lAjXZWH8SYc6932pS6XLyfHp6HyhjKNCd7RvL1w32gz1tdvb25s\nlMx7XslfC7SblJ5qN26Wu1MRJK8CcGxyrgspmIAJhzYU/HUu4vpFyBWCSdXIMrfC\nXJSID1BH8+j9NZj2hxDizrVTGJSbec1dwsGIw59ipkbQRqfU0FQE01SBLfJg/uXe\nJplVrQerAgMBAAECggEAVUNAQt8buc5HMPkXECUBp3X4YeBG4OEFdvxUxF6PxIjK\nMB/FMPIVDQsiN/TTiwoGmjoWGhOJhxoemDNAn0yl35MnUogBHFcPASwd2UlBp9Co\nE3u/fqH39wwlUeW597+6iEMVVs29OZifQYYOXqta3lhA7XiCkPgRux7wpSeDvARj\neLhbD5PcFG/jGlcSbyE7nxe1Z0KPFTMjoGdupLkFMjDAYBtHKLzBWAfwg0MTZIdM\nwsHR+La8IZ8E20vAWSYnlEzSi7Ay1Bl0DWaumiRPba/ArEwP7xgPY/UAFuRTglUH\nlaDn0neROWU8NXlzg4NVoVOFqzK98cNVpyBjElVRyQKBgQD8qgZXcGctia+M+U9X\nx7SkGb9VH2QYqHNJ33yTPGm0P856VdF0FpJqI7vgSrNdadab0S2PHeDTEflWo0os\nT5ead8pta+42JGBIiagCqC85nHLbNqMeC/mDv13oqn1NAdowqoyhRTi0o6ItQzD1\nYgj84PFy4U4SJ5RMZWBoToAYiQKBgQDlUqOvmcwEcJhP2j9r5/TrJbkWcev5Iej/\ncx/ViLoyWG5YiVePt3RIAw80Meh63/MF/CiyUAhmx4XCWEpvhO/rs4D1S9menDvo\njD9giNT+JulJVfnNOFplIPKtqovl47SxjQWSoIeTfAqxi72DJ6Ek2mJF2IG/e8Vt\n6+nSvmkpkwKBgQDY00wn43UX1i2JzDVzvhTeMp5IfWzX4E83mQt+Cv0nSw51W4oo\nlmpFna7QFyr/wiECjKsNQ3W5jJYt7Gltx0vxqlVUO6gsXGEoPsGorg4A4aqLRsMK\nuPoCPspnLU/kMu+8jc+rYgz8r+Qv9ZZhLiVKZfuuO31VBRQ1z1XBjYROCQKBgE9V\nF2tYOUwP56E4T1h1FjWDB1TMdGXrZT96BDlK458nGIVoffIp9QA0jr3vxg08DEa1\nxR5qsX1c6Nki0h1iT92qa6JwawiD4/W/Du3GaGjD7VCBfbmRFTSHAW0y4tLUw13o\n+1SOVFihQNHLFfSZcRXetsCS9c/YcaRlSK6vUJIhAoGBAOfrt/n6Eqcp+WuPyPzT\nrRR4hCZj6zycaYINfxns+3bVYpt1PBsbXKddIhPvRdQNB91Ou248BpkWVsP/+SVw\neNI7saTynBv28GX7YXQ4/heNYSRu03Bqqni30kzsr9SRj1CDT0prmDY2hV3iXnaT\nn1AUSI9VVxHEhZsJWbYVZJXE\n-----END PRIVATE KEY-----\n'
+      # - name: Authenticate to Google Cloud
+      #   uses: google-github-actions/auth@v0
+      #   with:
+      #     credentials_json: ''
 
 
           # workload_identity_provider: projects/958830472274/locations/global/workloadIdentityPools/gh-pool/providers/gh-provider
