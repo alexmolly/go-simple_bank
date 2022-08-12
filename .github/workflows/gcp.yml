@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      IMAGE_NAME: lesson-087
+      IMAGE_NAME: simple_bank
       PROJECT_ID: my-linux-project-348713
 
 
