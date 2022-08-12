@@ -17,7 +17,7 @@ jobs:
       GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
     steps:
-      name: Step 1 - Echo out a GitHub Actions Secret to the logs
+      - name: Step 1 - Echo out a GitHub Actions Secret to the logs
       run: |
         echo "GOOGLE_CREDENTIALS"
         echo ${{ secrets.GOOGLE_CREDENTIALS }}
