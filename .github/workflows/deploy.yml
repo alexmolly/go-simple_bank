@@ -25,7 +25,7 @@ jobs:
         with:
           # workload_identity_provider: projects/958830472274/locations/global/workloadIdentityPools/gh-pool/providers/gh-provider
           # service_account: simple-bank-account@my-linux-project-348713.iam.gserviceaccount.com 
-          credentials_json: '$env:SUPER_SECRET'
+          credentials_json: '$env:GOOGLE_CREDENTIALS'
 
       # - name: Configure Docker
       #   run: gcloud auth configure-docker --quiet
