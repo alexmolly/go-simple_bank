@@ -17,17 +17,17 @@ jobs:
 
     env:
       IMAGE_NAME: gcr.io/github-actions-example-359201/app
-      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+      SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
 
     steps:
 
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # - name: Authenticate to Google Cloud
-      #   uses: google-github-actions/auth@v0
-      #   with:
-      #     credentials_json: ''
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v0
+        with:
+          credentials_json: '$SERVICE_ACCOUNT_KEY'
 
 
           # workload_identity_provider: projects/958830472274/locations/global/workloadIdentityPools/gh-pool/providers/gh-provider
