@@ -16,7 +16,7 @@ jobs:
       id-token: "write"
 
     env:
-      IMAGE_NAME: gcr.io/github-actions-example-359201/app
+      IMAGE_NAME: gcr.io/my-linux-project-348713/simple_bank
 
     steps:
 
