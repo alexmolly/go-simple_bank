@@ -44,7 +44,7 @@ jobs:
         with:
           image: ${{ env.IMAGE_NAME }}
           region: us-central1
-          service: simple_bank
+          service: simple-bank
 
       # - name: Test URL
       #   run: curl "${{ steps.deploy.outputs.url }}"
