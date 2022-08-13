@@ -1,4 +1,4 @@
-name: CD
+name: Deploy to Cloud Run
 
 on:
   push:
@@ -29,17 +29,14 @@ jobs:
           credentials_json: '${{ secrets.SERVICE_ACCOUNT_KEY }}'
 
 
-          # workload_identity_provider: projects/958830472274/locations/global/workloadIdentityPools/gh-pool/providers/gh-provider
-          # service_account: simple-bank-account@my-linux-project-348713.iam.gserviceaccount.com 
+      - name: Configure Docker
+        run: gcloud auth configure-docker --quiet
 
-      # - name: Configure Docker
-      #   run: gcloud auth configure-docker --quiet
+      - name: Build Docker image
+        run: docker build . -t $IMAGE_NAME
 
-      # - name: Build Docker image
-      #   run: docker build . -t $IMAGE_NAME
-
-      # - name: Push Docker image
-      #   run: docker push $IMAGE_NAME
+      - name: Push Docker image
+        run: docker push $IMAGE_NAME
 
       # - id: deploy
       #   name: Deploy Docker image
