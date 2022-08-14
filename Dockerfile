@@ -20,7 +20,7 @@ COPY start.sh .
 COPY wait-for.sh .
 COPY db/migration ./migration
 
-EXPOSE 8080
+EXPOSE $PORT
 
 # CMD [ "./main" ]
 CMD [ "/app/main" ]
