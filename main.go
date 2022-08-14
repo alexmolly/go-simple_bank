@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"log"
+	"os"
 
 	"github.com/alexmolly/simple_bank/api"
 	db "github.com/alexmolly/simple_bank/db/sqlc"
@@ -33,7 +34,16 @@ func main() {
 		log.Fatal("cannot create server:", err)
 	}
 
-	err = server.Start(config.ServerAddress)
+	// Determine port for HTTP service.
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+		log.Printf("defaulting to port %s", port)
+	}
+
+	// err = server.Start(config.ServerAddress)
+	err = server.Start("0.0.0.0:" + port)
+
 	if err != nil {
 		log.Fatal("cannot start server:", err)
 	}
