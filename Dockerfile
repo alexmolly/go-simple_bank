@@ -20,9 +20,9 @@ COPY start.sh .
 COPY wait-for.sh .
 COPY db/migration ./migration
 
-EXPOSE 8080
-ENV PORT=8080
-ENV HOST=0.0.0.0
+# EXPOSE 8080
+# ENV PORT=8080
+# ENV HOST=0.0.0.0
 
 # CMD [ "./main" ]
 CMD [ "/app/main" ]
