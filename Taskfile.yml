@@ -7,18 +7,18 @@ tasks:
 
 
     createdb: 
-        desc: Create simple_bank db
+        desc: Docker - create simple_bank db
         cmds:
         - docker exec -it postgres14 createdb --username=root --owner=root simple_bank
 
     create-api-image:
-        desc: Create simplebank image api
+        desc: Docker - create simplebank image api
         cmds:
         - docker build -t simplebank:latest .
 
 
     dropdb:
-        desc: Drop simple_bank db
+        desc: Docker - Drop simple_bank db
         cmds:
         - docker exec -it postgres14 dropdb simple_bank
 
@@ -52,7 +52,7 @@ tasks:
         - migrate -path db/migration -database "{{.DB_URL}}" -verbose down 1  
 
     postgres:
-        desc: Start Postgress db
+        desc: Docker - Start Postgress db
         cmds:
         - docker run --rm --name postgres14 --network simple-bank-network -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:14-alpine
 
@@ -62,7 +62,7 @@ tasks:
         - go run main.go
 
     shell:
-        desc: Shell into container
+        desc: Docker - Shell into container
         cmds:
         - docker exec -it postgres14 /bin/sh
 
@@ -73,12 +73,12 @@ tasks:
         - sqlc generate
 
     spostgres:
-        desc: Start Postgress db with permanent storage
+        desc: Docker - Start Postgress db with permanent storage
         cmds:
         - docker run --rm --name postgres14 --network simple-bank-network -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d -v postgres:/var/lib/postgresql/data postgres:14-alpine 
 
     sapi:
-        desc: Start simplebank api image 
+        desc: Docker - Start simplebank api image 
         cmds:
         - docker container run --rm --name simplebank --network simple-bank-network -p 8080:8080 -e GIN_MODE=release -e "DB_SOURCE=postgresql://root:secret@postgres14:5432/simple_bank?sslmode=disable" simplebank:latest
 
@@ -88,13 +88,13 @@ tasks:
         - go test -v -cover ./...
 
     usedb:
-        desc: Use simple_bank db
+        desc: Docker - Use simple_bank db
         cmds:
         - docker exec -it postgres14 psql -U root -d simple_bank
 
 
     di:
-        desc: Test for interactive container
+        desc: Docker - Test for interactive container
         cmds:
         - docker container run --rm -it simplebank sh
     
