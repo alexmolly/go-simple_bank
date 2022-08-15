@@ -38,13 +38,13 @@ jobs:
       - name: Push Docker image
         run: docker push $IMAGE_NAME
 
-      # - id: deploy
-      #   name: Deploy Docker image
-      #   uses: "google-github-actions/deploy-cloudrun@v0"
-      #   with:
-      #     image: ${{ env.IMAGE_NAME }}
-      #     region: us-central1
-      #     service: simple-bank-service
+      - id: deploy
+        name: Deploy Docker image
+        uses: "google-github-actions/deploy-cloudrun@v0"
+        with:
+          image: ${{ env.IMAGE_NAME }}
+          region: us-central1
+          service: simple-bank-service
 
       # - name: Test URL
       #   run: curl "${{ steps.deploy.outputs.url }}"
