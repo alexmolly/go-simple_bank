@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 	"os"
 
@@ -23,7 +24,13 @@ func main() {
 		log.Fatal("cannot load config file:", err)
 	}
 
-	conn, err = sql.Open(config.DBDriver, config.DBSource)
+	// dbsource := fmt.Sprintf("postgresql://%s:%s@%s:5432/%s?sslmode=disable", config.DBUser, config.DBPassword, config.DBHost, config.DBName)
+
+	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s "+
+		"password=%s dbname=%s sslmode=%s",
+		config.DBHost, config.DBPort, config.DBUser, config.DBPassword, config.DBName, config.DBSSLMode)
+
+	conn, err = sql.Open(config.DBDriver, psqlInfo)
 	if err != nil {
 		log.Fatal("cannot connect to db:", err)
 	}
